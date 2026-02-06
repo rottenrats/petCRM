@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Account;
 use App\Models\Budget;
 use App\Models\Transaction;
+use App\Models\Invite;
 
 class DemoDataSeeder extends Seeder
 {

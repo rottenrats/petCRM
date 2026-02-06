@@ -19,4 +19,3 @@ class InviteFactory extends Factory
         ];
     }
 }
-p

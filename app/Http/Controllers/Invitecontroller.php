@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invite;
+use App\Mail\InviteMail;
 
+use Illuminate\Mail;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 

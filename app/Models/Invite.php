@@ -40,10 +40,23 @@ class Invite extends Model
         'used_at' => 'datetime',
     ];
 
-    /*
+    public function scopeValid($query)
+    {
+        return $query
+                ->whereNull('used_at')
+                ->where('expires_at', '>', now());
+    }
+
+    public function markAsUsed(): void{
+        $this->update([
+            'used_at' => now(),
+        ]);
+    }
+
+    
     public function company() {
         return $this->belongsTo(Company::class);
     }
-    */
+    
 
 }

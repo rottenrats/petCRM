@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -68,5 +67,18 @@ class User extends Authenticatable
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function canInvite(string $role): bool
+    {
+        if($this->role === self::ROLE_OWNER) {
+            return in_array($role, [self::ROLE_ADMIN, self::ROLE_USER]);
+        }
+
+        if($this->role === self::ROLE_ADMIN) {
+            return $role === self::ROLE_USER;
+        }
+
+        return false;
     }
 }

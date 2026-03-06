@@ -6,7 +6,7 @@ use App\Services\Invite\CreateInviteService;
 use App\Http\Requests\InviteRequest;
 use App\Models\User;
 
-class InviteСontroller extends Controller
+class InviteController extends Controller
 {
     public function create()
     {
@@ -34,9 +34,7 @@ class InviteСontroller extends Controller
         \Log::info('User role: ' . $user->role);
         \Log::info('Selected role from form: ' . $data['role']);
 
-        if(!$user->canInvite($data['role'])) {
-            return back()->withErrors(['role'=>'Недостаточно прав для назначения этой роли.']);
-        }
+        $this->authorize('invite', [User::class, $data['role']]);
 
         $service->handle($user, $data);
 

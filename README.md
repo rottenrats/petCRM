@@ -24,7 +24,7 @@
 - система приглашений (email через mailer)  
 
 **Архитектура / Architecture:**  
-Request → Controller → Service → Model
+Route → Controller (с Request) → Service → Model
 
 **Цель:**  
 Практика backend-разработки на Laravel и построение структуры реального проекта.
